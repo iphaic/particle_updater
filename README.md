@@ -5,9 +5,7 @@
 # Particle Syntax Updater
 Automatically updates particle syntax from 24w09a to work in 1.20.5 Pre Release 1 or later
 
-Can support 1.20.0 - 1.20.4 to 1.20.5 Pre Release 1 in some cases, but has no direct support if you are using:
-
-`particle item item_name{CustomModelData:1}`
+Does not include support for pre 24w09a syntax. It should work properly even still as long as your project doesn't include: `particle minecraft:item item_name{CustomModelData:1}` or `particle minecraft:entity_effect`
 
 ## How to Use
 1. Download & run `particle_updater.exe` from releases
