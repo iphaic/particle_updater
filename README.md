@@ -3,7 +3,7 @@
 </p>
 
 # Particle Syntax Updater
-Automatically updates particle syntax from 24w09a to work in 1.20.5 Pre Release 1 or later (Intended for updating from 24w09a-24w14a to 1.20.5 Pre Release 1/2)
+Automatically updates particle syntax from 24w09a to work in 1.20.5 Pre Release 1 or later (Intended for updating from 24w09a-24w14a to 1.20.5 Pre Release 1-3)
 
 Does not include support for pre 24w09a syntax. It should work properly even still as long as your project doesn't include: `particle minecraft:item item_name{CustomModelData:1}` or `particle minecraft:entity_effect`
 
