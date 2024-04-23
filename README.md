@@ -23,6 +23,8 @@ Supports:
 2. Select the datapack folder that you want to update
 3. Click Start Syntax Update
 
+If the program crashes your selected directory may contain too many files
+
 ### Discord
 Consider joining my Discord
 
