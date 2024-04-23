@@ -7,6 +7,17 @@ Automatically updates particle syntax from 24w09a-24w14a to work in 1.20.5 Pre R
 
 Does not include support for pre 24w09a syntax. It should work properly even still as long as your project doesn't include: `particle minecraft:item item_name{CustomModelData:1}` or `particle minecraft:entity_effect`
 
+Supports:
+- dust
+- dust_color_transition
+- item
+- item with custom_model_data=#
+- block
+- block_marker
+- falling_dust
+- dust_pillar
+- entity_effect
+
 ## How to Use
 1. Download [from here](https://github.com/iphaic/particle_updater/releases) & run `particle_updater.exe` from releases
 2. Select the datapack folder that you want to update
