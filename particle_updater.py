@@ -111,6 +111,15 @@ class ParticleSyntaxUpdater:
                 value = f"{int(value)}.0"
             parts.append(value)
         return f"particle minecraft:dust_color_transition{{from_color: [{parts[0]}, {parts[1]}, {parts[2]}], scale: {parts[3]}, to_color: [{parts[4]}, {parts[5]}, {parts[6]}]}}"
+    
+    def format_entity_effect(self, match):
+        parts = []
+        for i in range(1, 5):
+            value = match.group(i)
+            if value.isdigit():
+                value = f"{int(value)}.0"
+            parts.append(value)
+        return f"particle minecraft:entity_effect{{color: [{parts[0]}, {parts[1]}, {parts[2]}, {parts[3]}]}}"
 
     # do updates
     def update_syntax(self, content):
@@ -128,9 +137,9 @@ class ParticleSyntaxUpdater:
         )
         # item
         content = re.sub(
-        r"particle (?:minecraft:)?item ([a-zA-Z_]+)(?:\{(?:minecraft:)?custom_model_data=(\d+)\})?",
-        lambda m: f"particle item{{item:{{id:\"minecraft:{m.group(1)}\"{',components:{\"minecraft:custom_model_data\":' + m.group(2) + '}' if m.group(2) else ''}}}}}",
-        content
+            r"particle (?:minecraft:)?item ([\w:]+)(?:\[\s*(?:minecraft:)?custom_model_data\s*=\s*(\d+)\s*\])?",
+            lambda m: f"particle minecraft:item{{item:{{id:\"{m.group(1)}\"{',components:{\"minecraft:custom_model_data\":' + m.group(2) + '}' if m.group(2) else ''}}}}}",
+            content
         )
         # block, block_marker, falling_dust, dust_pillar
         content = re.sub(
@@ -140,8 +149,8 @@ class ParticleSyntaxUpdater:
         ) 
         # entity effect
         content = re.sub(
-            r"(particle\s+(?:minecraft:)?entity_effect) (\d*\.?\d+) (\d*\.?\d+) (\d*\.?\d+) (\d*\.?\d+)",
-            r"\1{color:[\2, \3, \4, \5]}",
+            r"particle (?:minecraft:)?entity_effect (\d+\.?\d*) (\d+\.?\d*) (\d+\.?\d*) (\d+\.?\d*)",
+            self.format_entity_effect,
             content
         )
         return content
